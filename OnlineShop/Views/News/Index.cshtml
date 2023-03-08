@@ -1,0 +1,32 @@
+﻿@model List<OnlineShop.Context.News>
+@{
+    ViewBag.Title = "Index";
+}
+
+        <div class="main">
+            <div class="content">
+                @foreach (var item in Model)
+                {
+
+                <div class="image group">
+                    <div class="grid images_3_of_1">
+                        <img src="~/Content/images/@item.Avatar" alt="" />
+                    </div>
+                    <div class="grid news_desc">
+                        <h3>@item.Name </h3>
+                        <h4>
+                            @*@{
+                                var time = DateTime.;
+                            }
+                            Posted on @time*@
+                        </h4>
+                        <p>@item.ShortDes</p>
+                        <p>@item.FullDescription</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+

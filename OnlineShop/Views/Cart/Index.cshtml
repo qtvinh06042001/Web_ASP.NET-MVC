@@ -1,0 +1,142 @@
+﻿@model IEnumerable<OnlineShop.Models.Cart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Giỏ hàng</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#removecart").click(function () {
+            var model = {};
+            model.Id = $("#productid").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Remove","Cart")',
+                data: JSON.stringify(model),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    $("#CartCount").text(@Session["count"] - 1);
+                    $("#product-" + model.Id).remove();
+                },
+                error: function () {
+                    alert("Xóa sản phẩm không thành công")
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<section class="section-content padding-y">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-9">
+                <div class="card">
+
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col" width="400">Sản phẩm</th>
+                                <th scope="col" width="200">Số lượng</th>
+                                <th scope="col" width="200">Giá</th>
+                                <th scope="col" width="200">Tổng</th>
+                                <th scope="col" class="text-right" width="200"> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ 
+                                var sum = 0;
+                            }
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="product-@item.Product.Id">
+                                        <td>
+                                            <figure class="itemside">
+                                                <div style="float:left" align="center">
+                                                    @{
+                                                        string ImagePath = "~/Content/images/" + item.Product.Avatar;
+                                                    }
+                                                    <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+                                                </div>
+                                                <figcaption class="info">
+                                                    <a href="~/Product/Index/@item.Product.Id" class="title text-dark">@item.Product.Name</a>
+                                                </figcaption>
+                                            </figure>
+                                        </td>
+                                        <td align="center" width="50" >
+                                            <input  type="text" value="@item.Quantity" />
+                                        </td>
+                                        <td align="center" width="200">
+                                            <div class="price-wrap">
+                                                <var class="price">@item.Product.Price VND</var>
+                                            </div> <!-- price-wrap .// -->
+                                        </td>
+                                        <td align="center">
+                                            @{
+                                                
+                                                var sl = item.Quantity;
+                                                var price = item.Product.Price;
+                                                var total = sl * price;
+                                                sum = (int)(sum + total);
+
+                                            }
+                                            <div class="price-wrap">
+                                                <var class="price">@total VND</var>
+                                            </div> <!-- price-wrap .// -->
+                                        </td>
+                                        
+                                        
+                                        <td class="text-right">
+                                            <input type="hidden" value="@item.Product.Id" id="productid" />
+                                            <a href="" class="btn btn-default" id="removecart"> Xóa</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>Không có sản phẩm trong giỏ hàng</td>
+                                </tr>
+                            }
+                            
+
+
+                        </tbody>
+                    </table>
+                <br />
+                <div class="card-body border-top">
+
+                    <a style="float:left" href="~/Home/Index" class="btn btn-light"> <i class="btn btn-primary"></i> Tiếp tục mua sắm </a>
+                    <a style="float:right" href="~/Payment/Index" class="btn btn-primary float-md-right"> Thanh toán <i class="fa fa-chevron-right"></i> </a>
+                </div>
+                </div> <!-- card.// -->
+
+                
+
+            </main> <!-- col.// -->
+            <br />
+            <br />
+            <aside class="col-md-3">
+                
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <dl class="dlist-align">
+                            <dt>Thành tiền: @sum VND</dt>
+                            <dd class="text-right  h5"><strong></strong></dd>
+                        </dl>
+                        <hr>
+                        
+
+                    </div> <!-- card-body.// -->
+                </div>  <!-- card .// -->
+            </aside> <!-- col.// -->
+        </div>
+
+    </div> <!-- container .//  -->
+</section>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OnlineShop.Context.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Quản lí danh mục</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avatar)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @{
+            string ImagePath = "~/Content/images/" + item.Avatar;
+            }
+            <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+        </td>
+        <td>
+            @*@Html.ActionLink("Sửa", "Edit", new { id=item.Id }) |
+        @Html.ActionLink("Xem", "Details", new { id=item.Id }) |
+        @Html.ActionLink("Xóa", "Delete", new { id=item.Id })*@
+            <a href="~/Admin/CategoryAdmin/Edit/@item.Id"><img style="width:20px" src="~/Content/images/edit.png" /></a> |
+            <a href="~/Admin/CategoryAdmin/Details/@item.Id"><img style="width:20px" src="~/Content/images/details.png" /></a> |
+            <a href="~/Admin/CategoryAdmin/Delete/@item.Id"><img style="width:20px" src="~/Content/images/delete.png" /></a>
+        </td>
+    </tr>
+}
+
+</table>

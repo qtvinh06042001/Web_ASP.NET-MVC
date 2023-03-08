@@ -1,0 +1,39 @@
+﻿@model OnlineShop.Areas.Order_OrderDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết đơn hàng của @Model.objOrder.Name đặt lúc @Model.objOrder.CreateOnUtc</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <p>OrderId</p>
+        </th>
+        <th>
+            <p>ProductId</p>
+        </th>
+        <th>
+            <p>Quantity</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.lstOrderDetail) {
+    <tr>
+        <td>
+            @item.OrderId
+        </td>
+        <td>
+            @item.ProductId
+        </td>
+        <td>
+            @item.Quantity
+        </td>
+        
+    </tr>
+}
+
+</table>

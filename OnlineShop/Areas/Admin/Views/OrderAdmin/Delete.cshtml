@@ -1,0 +1,55 @@
+﻿@model OnlineShop.Context.Order
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa đơn hàng của @Html.DisplayFor(model => model.Name) lúc @Html.DisplayFor(model => model.CreateOnUtc)</h2>
+
+<h3>Bạn muốn xóa đơn hàng này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateOnUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateOnUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại danh sách", "Index")
+        </div>
+    }
+</div>

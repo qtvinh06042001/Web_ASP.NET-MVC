@@ -1,0 +1,31 @@
+﻿@model List<OnlineShop.Context.Product>
+
+@{
+    ViewBag.Title = "ProductsCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content_bottom">
+    <div class="heading">
+        <h3>Sản phẩm theo danh mục</h3>
+    </div>
+    
+    
+</div>
+<div class="section group">
+    @foreach (var item in Model)
+    {
+        <div class="grid_1_of_4 images_1_of_4">
+            <a href="~/Product/Index/@item.Id">
+                <h2>@item.Name</h2>
+                <img width="250" height="250" src="~/Content/images/@item.Avatar" alt="">
+            </a>
+            <div class="price" style="border:none">
+                
+                <div class="clear"></div>
+            </div>
+        </div>
+    }
+
+</div>
+

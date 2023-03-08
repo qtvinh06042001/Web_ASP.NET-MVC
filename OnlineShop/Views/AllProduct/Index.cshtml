@@ -1,0 +1,34 @@
+﻿@model OnlineShop.Models.Product_Category
+@{
+    ViewBag.Title = "Product";
+}
+
+<div class="main">
+    <div class="content">
+        
+        <div class="section group">
+            @foreach (var item in Model.ListProduct)
+            {
+                <div style="margin:0px; width:266px; height:350px" class="grid_1_of_4 images_1_of_4">
+                    <a href="~/Product/Index/@item.Id"><img width="250" height="250" src="~/Content/images/@item.Avatar" alt=""></a>
+                    <h2>
+                        @Html.ActionLink(item.Name, "Index", "Product", new { Id = item.Id }, null)
+                    </h2>
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p><span class="rupees">@item.Price đ</span></p>
+                        </div>
+                        @*<div class="add-cart">
+                            <h4><a href="preview.html">Add to Cart</a></h4>
+                        </div>*@
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,47 @@
+﻿@model OnlineShop.Context.Users
+@{
+    ViewBag.Title = "Login";
+}
+<style>
+    #Password {
+        padding: 8px !important;
+        margin: unset !important;
+        width: 240px !important;
+    }
+</style>
+<div class="main">
+    <div class="content">
+        <div class="section group">
+            <div class="col span_2_of_3">
+                <div class="contact-form">
+                    <h2>Đăng nhập</h2>
+                    
+                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                <div class="form-group" style="width: 250px !important;">
+                    @*@Html.LabelFor(m => m.Email)*@
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                    </div>
+                    
+
+                </div>
+                                <div class="form-group" >
+                                    @*@Html.LabelFor(m => m.Password)<br />*@
+                                                                   <div class="col-md-10" >
+                                                                       @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                                                                   </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" style="right:unset" />
+                                </div>
+                            }
+                        </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+

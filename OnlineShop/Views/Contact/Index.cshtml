@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="main">
+    <div class="content">
+        <div class="section group">
+            <div class="col span_2_of_3">
+                <div class="contact-form">
+                    <h2>Liên hệ chúng tôi</h2>
+                    @using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+                    {
+                        <div>
+                            <span><label>Họ tên</label></span>
+                            <span><input type="text" name="Name" class="form-control"></span>
+                        </div>
+                        <div>
+                            <span><label>Email</label></span>
+                            <span><input type="text" name="Email" class="form-control"></span>
+                        </div>
+                        <div>
+                            <span><label>Tên công ty</label></span>
+                            <span><input type="text" name="CompanyName" class="form-control"></span>
+                        </div>
+                        <div>
+                            <span><label>Nội dung</label></span>
+                            <span><textarea name="Subject"> </textarea></span>
+                        </div>
+                        <div>
+                            <span><input type="submit" value="Gửi" class="btn"></span>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="col span_1_of_3">
+                <div class="contact_info">
+                    <h3>Find Us Here</h3>
+                    <div class="map">
+                        <iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1857.0732619487437!2d106.24838300000002!3d21.423485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31356a03a7bd3c5b%3A0x63b179985cb97fef!2zQ-G7rWEgSMOgbmcgxJBp4buHbiBU4butIFRyxrDhu51uZyBIb2E!5e0!3m2!1svi!2sus!4v1678259445815!5m2!1svi!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+                    </div>
+                </div>
+                <div class="company_address">
+                    <h3>Điện máy Trường Hoa</h3>
+                    <p>Phố Bằng, An Hà</p>
+                    <p>Lạng Giang, Bắc Giang, Việt Nam</p>
+                    <p>Đóng cửa lúc 22:00</p>
+                    <p>Phone: 02043880153</p>
+                    <p>Email: minkanklove6@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

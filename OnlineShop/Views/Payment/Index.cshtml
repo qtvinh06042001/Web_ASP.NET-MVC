@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="main">
+    <div class="content">
+        <div class="section group">
+            <div class="col span_2_of_3">
+                <div class="contact-form">
+                    <div class="col-md-8">
+                        <h1>Thanh toán</h1>
+                        <p>Bạn hãy kiểm tra lại thông tin đặt hàng!</p>
+                    </div>
+                    <div class="col-md-8">
+                        <h2>Thông tin khách hàng</h2>
+                        @using (Html.BeginForm("Index", "Payment", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                <label>Họ tên khách hàng: </label>
+                                <input type="text" name="Name" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại: </label>
+                                <input type="text" name="Phone" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ: </label>
+                                <input type="text" name="Address" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                               <input type="submit" value="Đặt hàng" class="btn" />
+
+                            </div>
+                        }
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

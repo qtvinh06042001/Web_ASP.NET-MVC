@@ -1,0 +1,48 @@
+﻿@model OnlineShop.Context.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/SharedAdmin/_Layout.cshtml";
+}
+
+<h2>Xóa danh mục</h2>
+
+<h3 style="color:red" align="center" >Bạn chắc chắn muốn xóa danh mục?</h3>
+<div>
+    <h4>Danh mục</h4>
+    <hr />
+    <table style="font-size:24px" align="center" class="dl-horizontal">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Name) :
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Avatar) :
+            </td>
+
+            <td>
+                @{
+                    string ImagePath = "~/Content/images/" + Model.Avatar;
+                }
+                <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+            </td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm("Delete", "CategoryAdmin", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại danh sách", "Index")
+        </div>
+    }
+</div>
